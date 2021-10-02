@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/cardViewStyle">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/main_fragment_recycler_item_image_view"
+            android:layout_width="@dimen/_80dp"
+            android:layout_height="@dimen/_80dp"
+            android:src="@drawable/anig"
+            android:layout_margin="@dimen/_3dp"
+            android:visibility="visible"
+            android:textColor="#515151"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/item_description"
+            app:layout_constraintEnd_toStartOf="@+id/mainFragmentRecyclerItemTextView"
+            android:contentDescription="@string/todo" />
+
+        <TextView
+            android:id="@+id/mainFragmentRecyclerItemTextView"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_0dp"
+            android:text="@string/title"
+            android:visibility="visible"
+            android:gravity="center"
+            android:textSize="@dimen/_30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/item_description"
+            app:layout_constraintStart_toEndOf="@+id/main_fragment_recycler_item_image_view" />
+
+        <TextView
+            android:id="@+id/item_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/main_fragment_recycler_item_image_view"
+            app:layout_constraintBottom_toTopOf="@id/delete_btn"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/delete_btn"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_40dp"
+            android:layout_marginEnd="@dimen/_5dp"
+            android:layout_marginStart="@dimen/_5dp"
+            android:text="@string/delete"
+            android:visibility="visible"
+            android:backgroundTint="@color/lazy_red"
+            app:layout_constraintEnd_toStartOf="@id/done_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_description"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/done_btn"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_40dp"
+            android:layout_marginEnd="@dimen/_5dp"
+            android:layout_marginStart="@dimen/_5dp"
+            android:text="@string/done"
+            android:visibility="visible"
+            android:backgroundTint="@color/lazy_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/delete_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_description"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

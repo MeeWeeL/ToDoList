@@ -1,0 +1,124 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragments.mainfragment.MainFragment">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel_btn"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15dp"
+            android:text="@string/cancel"
+            android:backgroundTint="@color/lazy_red"
+            app:layout_constraintTop_toTopOf="@id/save_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/save_btn"
+            app:layout_constraintBottom_toBottomOf="@id/save_btn"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/save_btn"
+            android:layout_width="@dimen/_0dp"
+
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15dp"
+            android:text="@string/save"
+            android:backgroundTint="@color/lazy_green"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cancel_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/title"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/title"
+            app:layout_constraintTop_toBottomOf="@id/save_btn"
+            app:layout_constraintBottom_toTopOf="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:textSize="@dimen/_30sp"
+            android:textColor="#515151"
+            android:hint="Enter title"
+            android:textStyle="bold"
+            android:inputType="textMultiLine"
+            android:gravity="center" />
+
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/back_btn"
+            android:src="@drawable/ic_back"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            app:rippleColor="@color/white"
+            android:tint="@color/lazy_blue"
+            android:layout_margin="@dimen/_14dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toTopOf="@id/image"
+            app:layout_constraintBottom_toBottomOf="@id/image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/image"/>
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="1"
+            android:src="@drawable/anig"
+            android:contentDescription="@string/todo"
+            app:layout_constraintStart_toEndOf="@id/back_btn"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintBottom_toTopOf="@id/descriptionLabel"
+            app:layout_constraintEnd_toStartOf="@id/next_btn"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/next_btn"
+            android:src="@drawable/ic_next"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            app:rippleColor="@color/white"
+            android:tint="@color/lazy_blue"
+            android:layout_margin="@dimen/_14dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toTopOf="@id/image"
+            app:layout_constraintBottom_toBottomOf="@id/image"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/descriptionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_25_dp"
+            android:text="@string/description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image"
+            app:layout_constraintBottom_toTopOf="@id/scroll"/>
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionLabel">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/description_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10dp"
+                android:paddingBottom="@dimen/_10dp"
+                android:textColor="#515151"
+                style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
+                android:hint="Enter description"
+                android:inputType="textMultiLine"
+                android:textSize="@dimen/_20sp"
+                android:textStyle="bold" />
+
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>
