@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.meeweel.todolist.databinding.MainRecyclerItemBinding
-import com.meeweel.todolist.model.Quest
-import com.meeweel.todolist.model.changingQuest
+import com.meeweel.todolist.model.data.Quest
+import com.meeweel.todolist.model.repository.changingQuest
 
 class MainFragmentAdapter :
     RecyclerView.Adapter<MainFragmentAdapter.MainViewHolder>() {

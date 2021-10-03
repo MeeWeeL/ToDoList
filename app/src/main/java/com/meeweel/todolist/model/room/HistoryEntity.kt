@@ -1,4 +1,4 @@
-package com.meeweel.todolist.room
+package com.meeweel.todolist.model.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

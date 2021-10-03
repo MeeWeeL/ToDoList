@@ -1,4 +1,4 @@
-package com.meeweel.todolist.model
+package com.meeweel.todolist.model.data
 
 import android.os.Parcelable
 import com.meeweel.todolist.R

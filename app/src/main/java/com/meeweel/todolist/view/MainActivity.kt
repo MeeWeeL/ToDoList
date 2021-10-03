@@ -5,13 +5,10 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.meeweel.todolist.R
 import com.meeweel.todolist.databinding.ActivityMainBinding
-import com.meeweel.todolist.model.*
-import com.meeweel.todolist.room.App
+import com.meeweel.todolist.model.repository.defaultQuest
 import com.meeweel.todolist.view.deletedfragment.DeletedFragment
 import com.meeweel.todolist.view.donefragment.DoneFragment
 import com.meeweel.todolist.view.mainfragment.MainFragment

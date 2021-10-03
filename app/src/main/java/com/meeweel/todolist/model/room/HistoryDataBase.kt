@@ -1,4 +1,4 @@
-package com.meeweel.todolist.room
+package com.meeweel.todolist.model.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

@@ -1,8 +1,9 @@
-package com.meeweel.todolist.model
+package com.meeweel.todolist.model.repository
 
-import com.meeweel.todolist.room.HistoryDao
-import com.meeweel.todolist.room.convertHistoryEntityToQuest
-import com.meeweel.todolist.room.convertQuestToEntity
+import com.meeweel.todolist.model.data.Quest
+import com.meeweel.todolist.model.room.HistoryDao
+import com.meeweel.todolist.model.room.convertHistoryEntityToQuest
+import com.meeweel.todolist.model.room.convertQuestToEntity
 
 class LocalRepositoryImpl(private val localDataSource: HistoryDao) : LocalRepository {
     override fun getAllHistory(): MutableList<Quest> {

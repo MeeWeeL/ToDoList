@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.meeweel.todolist.databinding.EditLayoutBinding
-import com.meeweel.todolist.model.Quest
-import com.meeweel.todolist.model.defaultQuest
-import com.meeweel.todolist.model.images
+import com.meeweel.todolist.model.data.Quest
+import com.meeweel.todolist.model.repository.defaultQuest
+import com.meeweel.todolist.model.repository.images
 import com.meeweel.todolist.view.mainfragment.MainFragment
 import com.meeweel.todolist.viewmodel.MainViewModel
 

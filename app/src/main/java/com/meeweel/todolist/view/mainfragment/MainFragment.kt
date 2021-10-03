@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.meeweel.todolist.R
 import com.meeweel.todolist.databinding.MainFragmentBinding
 import com.meeweel.todolist.model.*
+import com.meeweel.todolist.model.data.Quest
 import com.meeweel.todolist.view.DetailsFragment
 import com.meeweel.todolist.viewmodel.MainViewModel
 

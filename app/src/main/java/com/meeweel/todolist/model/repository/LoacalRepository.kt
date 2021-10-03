@@ -1,4 +1,6 @@
-package com.meeweel.todolist.model
+package com.meeweel.todolist.model.repository
+
+import com.meeweel.todolist.model.data.Quest
 
 interface LocalRepository {
     fun getAllHistory(): MutableList<Quest>

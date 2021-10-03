@@ -1,6 +1,6 @@
-package com.meeweel.todolist.room
+package com.meeweel.todolist.model.room
 
-import com.meeweel.todolist.model.Quest
+import com.meeweel.todolist.model.data.Quest
 
 fun convertHistoryEntityToQuest(entityList: List<HistoryEntity>): MutableList<Quest> {
     val a = entityList.map {

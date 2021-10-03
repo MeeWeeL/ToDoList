@@ -1,6 +1,7 @@
-package com.meeweel.todolist.model
+package com.meeweel.todolist.model.repository
 
 import com.meeweel.todolist.R
+import com.meeweel.todolist.model.data.Quest
 
 
 val images: List<Int> = listOf(
@@ -23,6 +24,6 @@ val images: List<Int> = listOf(
     R.drawable.anig16,
     R.drawable.anig17
 )
-var defaultQuest = Quest(1,"","",images[0],0)
+var defaultQuest = Quest(1,"","", images[0],0)
 
 var changingQuest: MutableList<Quest> = mutableListOf()

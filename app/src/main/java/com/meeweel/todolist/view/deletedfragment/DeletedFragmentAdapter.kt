@@ -4,7 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.meeweel.todolist.databinding.DeletedRecyclerItemBinding
-import com.meeweel.todolist.model.*
+import com.meeweel.todolist.model.data.Quest
+import com.meeweel.todolist.model.repository.changingQuest
 
 class DeletedFragmentAdapter :
     RecyclerView.Adapter<DeletedFragmentAdapter.MainViewHolder>() {

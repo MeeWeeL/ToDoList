@@ -4,7 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.meeweel.todolist.model.*
-import com.meeweel.todolist.room.App.Companion.getHistoryDao
+import com.meeweel.todolist.model.data.Quest
+import com.meeweel.todolist.model.repository.LocalRepository
+import com.meeweel.todolist.model.repository.LocalRepositoryImpl
+import com.meeweel.todolist.model.repository.changingQuest
+import com.meeweel.todolist.model.room.App.Companion.getHistoryDao
 import java.lang.Thread.sleep
 
 class MainViewModel(private val repository: LocalRepository = LocalRepositoryImpl(getHistoryDao())) :

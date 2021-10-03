@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.meeweel.todolist.databinding.DoneLayoutBinding
 import com.meeweel.todolist.model.*
+import com.meeweel.todolist.model.data.Quest
 import com.meeweel.todolist.viewmodel.MainViewModel
 
 class DoneFragment : Fragment() {

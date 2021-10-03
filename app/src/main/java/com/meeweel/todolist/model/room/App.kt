@@ -1,4 +1,4 @@
-package com.meeweel.todolist.room
+package com.meeweel.todolist.model.room
 
 import android.app.Application
 import androidx.room.Room
@@ -25,7 +25,8 @@ class App : Application() {
                         db = Room.databaseBuilder(
                             appInstance!!.applicationContext,
                             HistoryDataBase::class.java,
-                            DB_NAME)
+                            DB_NAME
+                        )
                             .allowMainThreadQueries()
                             .build()
                     }
