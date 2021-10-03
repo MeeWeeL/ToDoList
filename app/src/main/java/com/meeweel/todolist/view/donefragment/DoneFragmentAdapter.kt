@@ -5,13 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.meeweel.todolist.databinding.DoneRecyclerItemBinding
 import com.meeweel.todolist.model.*
-import com.meeweel.todolist.view.mainfragment.MainFragment
-import com.meeweel.todolist.view.mainfragment.MainFragmentAdapter
 
 class DoneFragmentAdapter :
     RecyclerView.Adapter<DoneFragmentAdapter.MainViewHolder>() {
 
-    private var questData: List<Quest> = listOf()
+    private var questData: MutableList<Quest> = mutableListOf()
     private var onItemViewClickListener: DoneFragment.OnItemViewClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
@@ -42,26 +40,24 @@ class DoneFragmentAdapter :
                     onItemViewClickListener?.onItemViewClick(quest)
                 }
                 deleteBtn.setOnClickListener {
-                    deleteFromDone(quest)
+                    changingQuest.add(Quest(0, quest.title,quest.description,quest.image,quest.imageInt))
+                    questData.remove(quest)
                     notifyDataSetChanged()
                 }
                 restoreBtn.setOnClickListener {
-                    doneToMain(quest)
+                    changingQuest.add(Quest(1, quest.title,quest.description,quest.image,quest.imageInt))
+                    questData.remove(quest)
                     notifyDataSetChanged()
                 }
             }
         }
     }
 
-    fun setOnItemViewClickListener(onItemViewClickListener: DoneFragment.OnItemViewClickListener){
-        this.onItemViewClickListener = onItemViewClickListener
-    }
-
     fun removeOnItemViewClickListener(){
         onItemViewClickListener = null
     }
 
-    fun setQuest(data: List<Quest>) {
+    fun setQuest(data: MutableList<Quest>) {
         questData = data
         notifyDataSetChanged()
     }

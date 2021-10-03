@@ -20,12 +20,38 @@
         android:focusable="true"
         tools:ignore="RtlHardcoded"
         android:contentDescription="@string/todo" />
-    <FrameLayout
-        android:id="@+id/container"
-        tools:context=".view.MainActivity"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DCDCDC"/>
+        android:background="#DCDCDC">
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            android:layout_margin="@dimen/_10dp"
+            ads:adUnitId="ca-app-pub-1316488884400350/9606876873"
+            ads:layout_constraintTop_toTopOf="parent"
+            ads:layout_constraintStart_toStartOf="parent"
+            ads:layout_constraintEnd_toEndOf="parent"
+            ads:layout_constraintBottom_toTopOf="@id/container">
+        </com.google.android.gms.ads.AdView>
+        <FrameLayout
+            android:id="@+id/container"
+            tools:context=".view.MainActivity"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#DCDCDC"
+            app:layout_constraintTop_toBottomOf="@id/adView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingBottom="@dimen/_50dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
@@ -35,9 +61,9 @@
         app:backgroundTint="@color/lazy_blue"
         app:fabAlignmentMode="center"
         app:hideOnScroll="true"
-        app:fabCradleRoundedCornerRadius="20dp"
-        app:fabCradleMargin="10dp"
-        app:fabCradleVerticalOffset="0dp"
+        app:fabCradleRoundedCornerRadius="@dimen/_20dp"
+        app:fabCradleMargin="@dimen/_10dp"
+        app:fabCradleVerticalOffset="@dimen/_0dp"
         app:layout_scrollFlags="scroll">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

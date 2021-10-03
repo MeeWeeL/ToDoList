@@ -7,16 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.meeweel.todolist.R
 import com.meeweel.todolist.databinding.DeletedLayoutBinding
-import com.meeweel.todolist.databinding.DoneLayoutBinding
-import com.meeweel.todolist.model.AppState
-import com.meeweel.todolist.model.Quest
-import com.meeweel.todolist.view.DetailsFragment
-import com.meeweel.todolist.view.donefragment.DoneFragment
-import com.meeweel.todolist.view.donefragment.DoneFragmentAdapter
-import com.meeweel.todolist.view.mainfragment.MainFragment
-import com.meeweel.todolist.view.mainfragment.MainFragmentAdapter
+import com.meeweel.todolist.model.*
 import com.meeweel.todolist.viewmodel.MainViewModel
 
 class DeletedFragment : Fragment() {
@@ -24,7 +16,6 @@ class DeletedFragment : Fragment() {
     companion object {
         fun newInstance() = DeletedFragment()
     }
-
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this).get(MainViewModel::class.java)
     }
@@ -42,25 +33,12 @@ class DeletedFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
         adapter.removeOnItemViewClickListener()
+        super.onDestroyView()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        adapter.setOnItemViewClickListener(object: OnItemViewClickListener {
-            override fun onItemViewClick(quest: Quest) {
-                activity?.supportFragmentManager?.apply {
-                    beginTransaction()
-                        .replace(R.id.container, DetailsFragment.newInstance(Bundle().apply {
-                            putParcelable(DetailsFragment.BUNDLE_EXTRA, quest)
-                        }))
-                        .addToBackStack("")
-                        .commitAllowingStateLoss()
-                }
-            }
-        })
-
         binding.mainFragmentRecyclerView.adapter = adapter
         val observer = Observer<AppState> { a ->
             renderData(a)

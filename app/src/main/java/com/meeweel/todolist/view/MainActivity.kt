@@ -3,21 +3,35 @@ package com.meeweel.todolist.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.meeweel.todolist.R
 import com.meeweel.todolist.databinding.ActivityMainBinding
-import com.meeweel.todolist.model.defaultQuest
+import com.meeweel.todolist.model.*
+import com.meeweel.todolist.room.App
 import com.meeweel.todolist.view.deletedfragment.DeletedFragment
 import com.meeweel.todolist.view.donefragment.DoneFragment
 import com.meeweel.todolist.view.mainfragment.MainFragment
+import com.meeweel.todolist.viewmodel.MainViewModel
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
+    private val viewModel: MainViewModel by lazy {
+        ViewModelProvider(this).get(MainViewModel::class.java)
+    }
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         savedInstanceState?.let {} ?: refresh()
+        MobileAds.initialize(this) {}
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
         binding.navBar.background = null
         binding.fab.setOnClickListener {
             supportFragmentManager.apply {
@@ -43,5 +57,19 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(binding.container.id, fragment)
             .commitNow()
+    }
+
+    override fun onDestroy() {
+        viewModel.sync()
+        thread {
+            Thread.sleep(1000)
+            runOnUiThread {
+                super.onDestroy()
+            }
+        }
+    }
+    override fun onDetachedFromWindow() {
+        viewModel.sync()
+        super.onDetachedFromWindow()
     }
 }

@@ -1,17 +1,18 @@
 package com.meeweel.todolist.view
 
-import android.annotation.SuppressLint
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.meeweel.todolist.R
+import androidx.lifecycle.ViewModelProvider
 import com.meeweel.todolist.databinding.EditLayoutBinding
 import com.meeweel.todolist.model.Quest
+import com.meeweel.todolist.model.defaultQuest
 import com.meeweel.todolist.model.images
-import com.meeweel.todolist.model.localMyQuestList
 import com.meeweel.todolist.view.mainfragment.MainFragment
+import com.meeweel.todolist.viewmodel.MainViewModel
 
 class DetailsFragment : Fragment() {
 
@@ -19,6 +20,9 @@ class DetailsFragment : Fragment() {
     private var _binding: EditLayoutBinding? = null
     private val binding get() = _binding!!
 
+    private val viewModel: MainViewModel by lazy {
+        ViewModelProvider(this).get(MainViewModel::class.java)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,15 +56,12 @@ class DetailsFragment : Fragment() {
                 image.setImageResource(images[imageInt])
             }
             saveBtn.setOnClickListener {
-                for (item in localMyQuestList) {
-                    if (item == questData) {
-                        item.description = descriptionValue.text.toString()
-                        item.title = title.text.toString()
-                        item.image = images[imageInt]
-                        item.imageInt = imageInt
-                        break
-                    }
-                }
+                val item = defaultQuest
+                item.description = descriptionValue.text.toString()
+                item.title = title.text.toString()
+                item.image = images[imageInt]
+                item.imageInt = imageInt
+                viewModel.saveChanges(questData, item)
                 activity?.supportFragmentManager?.beginTransaction()?.replace(id, MainFragment())?.commitNow()
             }
             cancelBtn.setOnClickListener {

@@ -10,4 +10,7 @@
     <color name="lazy_blue">#374889</color>
     <color name="lazy_green">#479859</color>
     <color name="lazy_red">#ed6565</color>
+    <color name="lazy_gray">#515151</color>
+    <color name="light_gray">#A9A9A9</color>
+    <color name="text_gray">#717171</color>
 </resources>

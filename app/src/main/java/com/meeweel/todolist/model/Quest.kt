@@ -6,6 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Quest (
+    var list: Int = 1,
     var title: String = "Title",
     var description: String = "Description",
     var image: Int = R.drawable.anig,

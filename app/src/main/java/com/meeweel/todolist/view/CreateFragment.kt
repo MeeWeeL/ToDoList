@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.meeweel.todolist.R
 import com.meeweel.todolist.databinding.EditLayoutBinding
 import com.meeweel.todolist.model.Quest
 import com.meeweel.todolist.model.images
-import com.meeweel.todolist.model.localMyQuestList
 import com.meeweel.todolist.view.mainfragment.MainFragment
+import com.meeweel.todolist.viewmodel.MainViewModel
 
 class CreateFragment : Fragment() {
 
@@ -18,6 +19,9 @@ class CreateFragment : Fragment() {
     private var _binding: EditLayoutBinding? = null
     private val binding get() = _binding!!
 
+    private val viewModel: MainViewModel by lazy {
+        ViewModelProvider(this).get(MainViewModel::class.java)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,10 +55,12 @@ class CreateFragment : Fragment() {
                 image.setImageResource(images[imageInt])
             }
             saveBtn.setOnClickListener {
-                val createdQuest = Quest(title = title.text.toString(),
-                    description = descriptionValue.text.toString(),
-                    image = images[imageInt], imageInt = imageInt)
-                localMyQuestList.add(createdQuest)
+                val item: Quest = Quest(1,"","",images[0],0)
+                item.description = descriptionValue.text.toString()
+                item.title = title.text.toString()
+                item.image = images[imageInt]
+                item.imageInt = imageInt
+                viewModel.saveNewQuest(item)
                 activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, MainFragment())?.commitNow()
             }
             cancelBtn.setOnClickListener {

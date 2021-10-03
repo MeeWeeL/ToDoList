@@ -9,4 +9,6 @@
     <string name="delete">delete</string>
     <string name="done">done</string>
     <string name="restore">restore</string>
+    <string name="enter_title">Enter title</string>
+    <string name="enter_description">Enter description</string>
 </resources>

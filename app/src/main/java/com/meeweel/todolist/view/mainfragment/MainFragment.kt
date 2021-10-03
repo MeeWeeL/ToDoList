@@ -9,8 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.meeweel.todolist.R
 import com.meeweel.todolist.databinding.MainFragmentBinding
-import com.meeweel.todolist.model.AppState
-import com.meeweel.todolist.model.Quest
+import com.meeweel.todolist.model.*
 import com.meeweel.todolist.view.DetailsFragment
 import com.meeweel.todolist.viewmodel.MainViewModel
 
@@ -19,7 +18,6 @@ class MainFragment : Fragment() {
     companion object {
         fun newInstance() = MainFragment()
     }
-
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this).get(MainViewModel::class.java)
     }
@@ -33,14 +31,14 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = MainFragmentBinding.inflate(inflater, container, false)
-        viewModel.getQuestFromLocalSource()
+
         return binding.root
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
         adapter.removeOnItemViewClickListener()
+        super.onDestroyView()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,9 +54,7 @@ class MainFragment : Fragment() {
                 }
             }
         })
-
         binding.mainFragmentRecyclerView.adapter = adapter
-
         val observer = Observer<AppState> { a ->
             renderData(a)
         }
@@ -84,4 +80,5 @@ class MainFragment : Fragment() {
     interface OnItemViewClickListener {
         fun onItemViewClick(quest: Quest)
     }
+
 }
